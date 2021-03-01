@@ -3,12 +3,16 @@ include 'header.php';
 
 
 
-if ($handle = opendir('/opt/lampp/htdocs')) {
-    echo "Gestionnaire du dossier : $handle\n";
-    echo "Entrées :\n";
+$home = "../";
+
+if (is_dir($home)) {
+    if ($type = opendir($home)) {
+        while (($file = readdir($type)) !==false) {
+            echo "fichier : $file : type : " . filetype($home . $file). "\n";
+        }
+    }
+    closedir($type);
+}
 
 
 include 'footer.php';
-}
-
-?>
