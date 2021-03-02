@@ -1,13 +1,23 @@
 <?php
 
 
-$home = "../";
+$home = "/";
+
 
 if (is_dir($home)) {
     if ($type = opendir($home)) {
         while (($file = readdir($type)) !==false) {
-            echo "fichier : $file : type : " . filetype($home . $file). "<br/>";
+            echo "  " . "$file." . filetype($home . $file) . "  ";
+            if (filetype($home . $file)== "dir"){
+            echo '<i class="fas fa-folder-open fa-2x"></i>';
+            }
+            else {
+            echo '<i class="fas fa-file fa-2x"></i> ';  
+            }
         }
     }
+    
+      
     closedir($type);
-}
+
+        }
