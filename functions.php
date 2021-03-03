@@ -1,11 +1,14 @@
 <?php
 
 
-($_POST['folder']);
+if(isset($_POST) && !empty($_POST['path'])){
+    $path = $_POST['path'];
+    getFiles($path);
+}
 
 
 
-function getfiles ($home){
+function getFiles ($home){
 
 
         if (is_dir($home)) {
